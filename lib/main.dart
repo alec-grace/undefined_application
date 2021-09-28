@@ -70,9 +70,9 @@ void main() => runApp(MaterialApp(
     //     backgroundColor: Colors.blue[900],
     //   ),
     // ),
-      /***************************************************************************
-       * END APP BAR
-       ************************************************************************/
+    /***************************************************************************
+     * END APP BAR
+     ************************************************************************/
     //--------------------------------------------------------------------------
     // ADDING IMAGE EXAMPLE
     //--------------------------------------------------------------------------
@@ -83,41 +83,75 @@ void main() => runApp(MaterialApp(
     // END ADDING IMAGE EXAMPLE
     //--------------------------------------------------------------------------
     backgroundColor: Colors.blue[900],
-    body:
-      Row (
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget> [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget> [
-              SizedBox(height: 40,),
-              ElevatedButton.icon(
-                  onPressed: (){},
-                  icon: Container(
-                      alignment: Alignment.centerLeft,
-                      child: Icon(
-                        CupertinoIcons.calendar,
-                        size: 50,
-                      )
-                  ),
-                  label:
+      body:
+        Row (
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget> [
+            SizedBox(width: 10.0),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget> [
+                SizedBox(height: 40,),
+                ElevatedButton.icon(
+                    onPressed: (){},
+                    icon: Container(
+                        alignment: Alignment.topLeft,
+                        child: Icon(
+                          CupertinoIcons.calendar,
+                          size: 50,
+                          color: Colors.blue[900],
+                        )
+                    ),
+                    label:
+                      Text(
+                        'Hello',
+                        style: TextStyle(
+                          fontFamily: 'Urbana',
+                          color: Colors.blue[900],
+                          fontSize: 20
+                        ),
+                      ),
+                    style:
+                      ElevatedButton.styleFrom(
+                        minimumSize: const Size(375.0, 120.0),
+                        primary: Colors.white60,
+                      ),
+
+                ),
+                SizedBox(height: 15.0),
+                ElevatedButton.icon(
+                    icon: Container(
+                        alignment: Alignment.center,
+                        child: Icon(
+                          CupertinoIcons.map_pin_ellipse,
+                          size: 50,
+                          color: Colors.blue[900],
+                        )
+                    ),
+                    onPressed: (){},
+                    label:
                     Text(
-                      'Hello',
+                      'There',
                       style: TextStyle(
                         fontFamily: 'Urbana',
-                        color: Colors.blue[900]
+                        color: Colors.blue[900],
+                        fontSize: 20,
                       ),
                     ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(200.0, 120.0)
+                  style:
+                  ElevatedButton.styleFrom(
+                    minimumSize: const Size(375.0, 120.0),
+                    primary: Colors.white60,
                   ),
-              ),
-              SizedBox(height: 15.0),
-              ElevatedButton.icon(
+                ),
+                SizedBox(height: 15.0),
+                ElevatedButton.icon(
                   icon: Container(
                       alignment: Alignment.center,
                       child: Icon(
-                        CupertinoIcons.map_pin_ellipse,
+                        CupertinoIcons.book_fill,
+                        size: 50,
+                        color: Colors.blue[900],
                       )
                   ),
                   onPressed: (){},
@@ -125,46 +159,25 @@ void main() => runApp(MaterialApp(
                   Text(
                     'General',
                     style: TextStyle(
-                        fontFamily: 'Urbana',
-                        color: Colors.blue[900]
+                      fontFamily: 'Urbana',
+                      color: Colors.blue[900],
+                      fontSize: 20,
                     ),
                   ),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200.0, 120.0)
+                  style:
+                  ElevatedButton.styleFrom(
+                    minimumSize: const Size(375.0, 120.0),
+                    primary: Colors.white60,
+                  ),
                 ),
-              ),
-            ]
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(height: 40,),
-              ElevatedButton.icon(
-                icon: Container(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    CupertinoIcons.news,
-                  )
-                ),
-                onPressed: (){},
-                label:
-                    Text(
-                      'There',
-                      style: TextStyle(
-                        fontFamily: 'Urbana',
-                        color: Colors.blue[900]
-                      ),
-                    ),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200.0, 120.0)
-                ),
-              ),
-              SizedBox(height: 15.0,),
-              ElevatedButton.icon(
+                SizedBox(height: 15.0),
+                ElevatedButton.icon(
                   icon: Container(
                       alignment: Alignment.center,
                       child: Icon(
-                        CupertinoIcons.book,
+                        CupertinoIcons.news_solid,
+                        size: 50,
+                        color: Colors.blue[900],
                       )
                   ),
                   onPressed: (){},
@@ -172,18 +185,149 @@ void main() => runApp(MaterialApp(
                   Text(
                     'Kenobi',
                     style: TextStyle(
-                        fontFamily: 'Urbana',
-                        color: Colors.blue[900]
+                      fontFamily: 'Urbana',
+                      color: Colors.blue[900],
+                      fontSize: 20,
                     ),
                   ),
-                style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(200.0, 120.0)
+                  style:
+                  ElevatedButton.styleFrom(
+                    minimumSize: const Size(375.0, 120.0),
+                    primary: Colors.white60,
+                  ),
                 ),
-              ),
-            ],
-          )
-        ]
-      ),
+              ]
+            ),
+            SizedBox(width: 10.0),
+          ]
+        )
+      /***********************************
+       * Second page - two column example
+       **********************************/
+    // body:
+    //   Row (
+    //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //     children: <Widget> [
+    //       Column(
+    //         mainAxisAlignment: MainAxisAlignment.start,
+    //         children: <Widget> [
+    //           SizedBox(height: 40,),
+    //           ElevatedButton.icon(
+    //               onPressed: (){},
+    //               icon: Container(
+    //                   alignment: Alignment.topLeft,
+    //                   child: Icon(
+    //                     CupertinoIcons.calendar,
+    //                     size: 50,
+    //                     color: Colors.blue[900],
+    //                   )
+    //               ),
+    //               label:
+    //                 Text(
+    //                   'Hello',
+    //                   style: TextStyle(
+    //                     fontFamily: 'Urbana',
+    //                     color: Colors.blue[900],
+    //                     fontSize: 20
+    //                   ),
+    //                 ),
+    //               style:
+    //                 ElevatedButton.styleFrom(
+    //                   minimumSize: const Size(190.0, 120.0),
+    //                   primary: Colors.white60,
+    //                 ),
+    //
+    //           ),
+    //           SizedBox(height: 15.0),
+    //           ElevatedButton.icon(
+    //               icon: Container(
+    //                   alignment: Alignment.center,
+    //                   child: Icon(
+    //                     CupertinoIcons.map_pin_ellipse,
+    //                     size: 50,
+    //                     color: Colors.blue[900],
+    //                   )
+    //               ),
+    //               onPressed: (){},
+    //               label:
+    //               Text(
+    //                 'General',
+    //                 style: TextStyle(
+    //                   fontFamily: 'Urbana',
+    //                   color: Colors.blue[900],
+    //                   fontSize: 20,
+    //                 ),
+    //               ),
+    //             style:
+    //             ElevatedButton.styleFrom(
+    //               minimumSize: const Size(190.0, 120.0),
+    //               primary: Colors.white60,
+    //             ),
+    //           ),
+    //         ]
+    //       ),
+    //       Column(
+    //         mainAxisAlignment: MainAxisAlignment.start,
+    //         children: [
+    //           SizedBox(height: 40,),
+    //           ElevatedButton.icon(
+    //             icon: Container(
+    //               alignment: Alignment.center,
+    //               child: Icon(
+    //                 CupertinoIcons.news_solid,
+    //                 size: 50,
+    //                 color: Colors.blue[900],
+    //               )
+    //             ),
+    //             onPressed: (){},
+    //             label:
+    //                 Text(
+    //                   'There',
+    //                   style: TextStyle(
+    //                     fontFamily: 'Urbana',
+    //                     color: Colors.blue[900],
+    //                     fontSize: 20,
+    //                   ),
+    //                 ),
+    //             style:
+    //             ElevatedButton.styleFrom(
+    //               minimumSize: const Size(190.0, 120.0),
+    //               primary: Colors.white60,
+    //             ),
+    //           ),
+    //           SizedBox(height: 15.0,),
+    //           ElevatedButton.icon(
+    //               icon: Container(
+    //                   alignment: Alignment.center,
+    //                   child: Icon(
+    //                     CupertinoIcons.book,
+    //                     size: 50,
+    //                     color: Colors.blue[900],
+    //                   )
+    //               ),
+    //               onPressed: (){},
+    //               label:
+    //               Text(
+    //                 'Kenobi',
+    //                 style: TextStyle(
+    //                   fontFamily: 'Urbana',
+    //                   color: Colors.blue[900],
+    //                   fontSize: 20,
+    //                 ),
+    //               ),
+    //             style:
+    //             ElevatedButton.styleFrom(
+    //               minimumSize: const Size(190.0, 120.0),
+    //               primary: Colors.white60,
+    //             ),
+    //           ),
+    //         ],
+    //       )
+    //    ]
+    //  ),
+      /***************************************
+       * End second page - two column example
+       **************************************/
     ),
 
   // ----------------------------------------------------------------------------
