@@ -7,9 +7,43 @@ void main() => runApp(MaterialApp(
   home: OpenPage(),
 ));
 
+Widget listItem(IconData icon, String titleText) {
+  return ElevatedButton.icon(
+    icon: Container(
+        alignment: Alignment.center,
+        child: Icon(
+          icon,
+          size: 50,
+          color: Colors.blue[900],
+        )
+    ),
+    onPressed: (){},
+    label:
+    Text(
+      titleText,
+      style: TextStyle(
+        fontFamily: 'Urbana',
+        color: Colors.blue[900],
+        fontSize: 20,
+      ),
+    ),
+    style:
+    ElevatedButton.styleFrom(
+      minimumSize: const Size(375.0, 100.0),
+      primary: Colors.white,
+      onPrimary: Colors.blue[900],
+    ),
+  );
+}
+
 class OpenPage extends StatefulWidget {
   @override
   State<OpenPage> createState() => _OpenPageState();
+}
+
+class SecondPage extends StatefulWidget{
+  @override
+  State<SecondPage> createState() => _SecondPageState();
 }
 
 class _OpenPageState extends State<OpenPage> {
@@ -18,14 +52,10 @@ class _OpenPageState extends State<OpenPage> {
 
   @override
   Widget build(BuildContext context) {
-    /**
-     * Widget tree to return
-     **/
+    ///Widget tree to return
     return Scaffold(
 
-    /***************************************************************************
-     *  BEGIN APP BAR
-     **************************************************************************/
+    ///BEGIN APP BAR
     appBar:
       AppBar(
         toolbarHeight: 150,
@@ -51,9 +81,9 @@ class _OpenPageState extends State<OpenPage> {
           ),
         ),
       ),
-    /***************************************************************************
-     * END APP BAR
-     ************************************************************************/
+    ///END APP BAR
+      ///
+    ///BEGIN HOME PAGE
     backgroundColor: Colors.blue[900],
     body:
       Padding(
@@ -64,7 +94,7 @@ class _OpenPageState extends State<OpenPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget> [
-            SizedBox(height: 50.0),
+            SizedBox(height: 15.0),
             ElevatedButton.icon(
               onPressed: () {
                 setState(() {
@@ -92,22 +122,147 @@ class _OpenPageState extends State<OpenPage> {
                   ElevatedButton.styleFrom(
                     minimumSize: const Size(375.0, 100.0),
                     primary: Colors.white,
+                    onPrimary: Colors.blue[900],
                   ),
-
             ),
             SizedBox(height: 15.0),
             ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondPage())
+                );
+              },
               icon: Container(
-                alignment: Alignment.center,
-                child: Icon(
-                  CupertinoIcons.map_pin_ellipse,
-                  size: 50,
-                  color: Colors.blue[900],
+                  alignment: Alignment.topLeft,
+                  child: Icon(
+                    CupertinoIcons.calendar,
+                    size: 50,
+                    color: Colors.blue[900],
+                  )
+              ),
+              label:
+              Text(
+                'Next Page',
+                style: TextStyle(
+                    fontFamily: 'Urbana',
+                    color: Colors.blue[900],
+                    fontSize: 20
+                ),
+              ),
+              style:
+              ElevatedButton.styleFrom(
+                minimumSize: const Size(375.0, 100.0),
+                primary: Colors.white,
+                onPrimary: Colors.blue[900],
+              ),
+            ),
+            SizedBox(height: 15.0),
+            listItem(CupertinoIcons.map_pin_ellipse, "There"),
+            SizedBox(height: 15.0),
+            listItem(CupertinoIcons.book_fill, "General"),
+            SizedBox(height: 15.0),
+            listItem(CupertinoIcons.news_solid, "Kenobi"),
+            SizedBox(height: 15.0),
+            listItem(CupertinoIcons.news_solid, "1Kenobi"),
+            SizedBox(height: 15.0),
+            listItem(CupertinoIcons.news_solid, "2Kenobi"),
+            SizedBox(height: 15.0),
+            listItem(CupertinoIcons.news_solid, "New Guy"),
+            SizedBox(height: 15.0),
+          ]
+        ),
+      ),
+      )
+    ///END HOME PAGE
+      ///
+
+    );
+  }
+}
+
+class _SecondPageState extends State<SecondPage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue[900],
+      body:
+        Row (
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget> [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget> [
+                SizedBox(height: 40,),
+                ElevatedButton.icon(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: Container(
+                    alignment: Alignment.topLeft,
+                    child: Icon(
+                      CupertinoIcons.calendar,
+                      size: 50,
+                      color: Colors.blue[900],
+                    )
+                  ),
+                  label: Text(
+                    'GO BACK',
+                    style: TextStyle(
+                      fontFamily: 'Urbana',
+                      color: Colors.blue[900],
+                      fontSize: 20
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(190.0, 120.0),
+                    primary: Colors.white,
+                    onPrimary: Colors.blue[900],
+                  ),
+                ),
+              SizedBox(height: 15.0),
+              ElevatedButton.icon(
+                icon: Container(
+                  alignment: Alignment.center,
+                  child: Icon(
+                    CupertinoIcons.map_pin_ellipse,
+                    size: 50,
+                    color: Colors.blue[900],
                   )
                 ),
-              onPressed: (){},
-              label:
-                Text(
+                onPressed: (){},
+                label: Text(
+                  'General',
+                  style: TextStyle(
+                    fontFamily: 'Urbana',
+                    color: Colors.blue[900],
+                    fontSize: 20,
+                  ),
+                ),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(190.0, 120.0),
+                primary: Colors.white,
+                onPrimary: Colors.blue[900],
+                ),
+              ),
+            ]
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 40,),
+              ElevatedButton.icon(
+                icon: Container(
+                  alignment: Alignment.center,
+                  child: Icon(
+                    CupertinoIcons.news_solid,
+                    size: 50,
+                    color: Colors.blue[900],
+                  )
+                ),
+                onPressed: (){},
+                label: Text(
                   'There',
                   style: TextStyle(
                     fontFamily: 'Urbana',
@@ -115,46 +270,20 @@ class _OpenPageState extends State<OpenPage> {
                     fontSize: 20,
                   ),
                 ),
-              style:
-                ElevatedButton.styleFrom(
-                  minimumSize: const Size(375.0, 100.0),
-                  primary: Colors.white,
-              ),
-            ),
-            SizedBox(height: 15.0),
-            ElevatedButton.icon(
-              icon: Container(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    CupertinoIcons.book_fill,
-                    size: 50,
-                    color: Colors.blue[900],
-                  )
-              ),
-              onPressed: (){},
-              label:
-              Text(
-                'General',
-                style: TextStyle(
-                  fontFamily: 'Urbana',
-                  color: Colors.blue[900],
-                  fontSize: 20,
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(190.0, 120.0),
+                primary: Colors.white,
+                onPrimary: Colors.blue[900],
                 ),
               ),
-              style:
-              ElevatedButton.styleFrom(
-                minimumSize: const Size(375.0, 100.0),
-                primary: Colors.white,
-              ),
-            ),
-            SizedBox(height: 15.0),
+            SizedBox(height: 15.0,),
             ElevatedButton.icon(
               icon: Container(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    CupertinoIcons.news_solid,
-                    size: 50,
-                    color: Colors.blue[900],
+                alignment: Alignment.center,
+                child: Icon(
+                  CupertinoIcons.book,
+                  size: 50,
+                  color: Colors.blue[900],
                   )
               ),
               onPressed: (){},
@@ -167,222 +296,18 @@ class _OpenPageState extends State<OpenPage> {
                   fontSize: 20,
                 ),
               ),
-              style:
-              ElevatedButton.styleFrom(
-                minimumSize: const Size(375.0, 100.0),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(190.0, 120.0),
                 primary: Colors.white,
+                onPrimary: Colors.blue[900],
               ),
             ),
-            SizedBox(height: 15.0),
-            ElevatedButton.icon(
-              icon: Container(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    CupertinoIcons.news_solid,
-                    size: 50,
-                    color: Colors.blue[900],
-                  )
-              ),
-              onPressed: (){},
-              label:
-              Text(
-                '1Kenobi',
-                style: TextStyle(
-                  fontFamily: 'Urbana',
-                  color: Colors.blue[900],
-                  fontSize: 20,
-                ),
-              ),
-              style:
-              ElevatedButton.styleFrom(
-                minimumSize: const Size(375.0, 100.0),
-                primary: Colors.white,
-              ),
-            ),
-            SizedBox(height: 15.0),
-            ElevatedButton.icon(
-              icon: Container(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    CupertinoIcons.news_solid,
-                    size: 50,
-                    color: Colors.blue[900],
-                  )
-              ),
-              onPressed: (){},
-              label:
-              Text(
-                '2Kenobi',
-                style: TextStyle(
-                  fontFamily: 'Urbana',
-                  color: Colors.blue[900],
-                  fontSize: 20,
-                ),
-              ),
-              style:
-              ElevatedButton.styleFrom(
-                minimumSize: const Size(375.0, 100.0),
-                primary: Colors.white,
-              ),
-            ),
-            SizedBox(height: 15.0),
-            ElevatedButton.icon(
-              icon: Container(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    CupertinoIcons.news_solid,
-                    size: 50,
-                    color: Colors.blue[900],
-                  )
-              ),
-              onPressed: (){},
-              label:
-              Text(
-                '3Kenobi',
-                style: TextStyle(
-                  fontFamily: 'Urbana',
-                  color: Colors.blue[900],
-                  fontSize: 20,
-                ),
-              ),
-              style:
-              ElevatedButton.styleFrom(
-                minimumSize: const Size(375.0, 100.0),
-                primary: Colors.white,
-              ),
-            ),
-            SizedBox(height: 15),
-          ]
-        ),
+          ],
+        )
+      ]
       ),
-      )
-      /***********************************
-       * Second page - two column example
-       **********************************/
-    // body:
-    //   Row (
-    //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-    //     children: <Widget> [
-    //       Column(
-    //         mainAxisAlignment: MainAxisAlignment.start,
-    //         children: <Widget> [
-    //           SizedBox(height: 40,),
-    //           ElevatedButton.icon(
-    //               onPressed: (){},
-    //               icon: Container(
-    //                   alignment: Alignment.topLeft,
-    //                   child: Icon(
-    //                     CupertinoIcons.calendar,
-    //                     size: 50,
-    //                     color: Colors.blue[900],
-    //                   )
-    //               ),
-    //               label:
-    //                 Text(
-    //                   'Hello',
-    //                   style: TextStyle(
-    //                     fontFamily: 'Urbana',
-    //                     color: Colors.blue[900],
-    //                     fontSize: 20
-    //                   ),
-    //                 ),
-    //               style:
-    //                 ElevatedButton.styleFrom(
-    //                   minimumSize: const Size(190.0, 120.0),
-    //                   primary: Colors.white60,
-    //                 ),
-    //
-    //           ),
-    //           SizedBox(height: 15.0),
-    //           ElevatedButton.icon(
-    //               icon: Container(
-    //                   alignment: Alignment.center,
-    //                   child: Icon(
-    //                     CupertinoIcons.map_pin_ellipse,
-    //                     size: 50,
-    //                     color: Colors.blue[900],
-    //                   )
-    //               ),
-    //               onPressed: (){},
-    //               label:
-    //               Text(
-    //                 'General',
-    //                 style: TextStyle(
-    //                   fontFamily: 'Urbana',
-    //                   color: Colors.blue[900],
-    //                   fontSize: 20,
-    //                 ),
-    //               ),
-    //             style:
-    //             ElevatedButton.styleFrom(
-    //               minimumSize: const Size(190.0, 120.0),
-    //               primary: Colors.white60,
-    //             ),
-    //           ),
-    //         ]
-    //       ),
-    //       Column(
-    //         mainAxisAlignment: MainAxisAlignment.start,
-    //         children: [
-    //           SizedBox(height: 40,),
-    //           ElevatedButton.icon(
-    //             icon: Container(
-    //               alignment: Alignment.center,
-    //               child: Icon(
-    //                 CupertinoIcons.news_solid,
-    //                 size: 50,
-    //                 color: Colors.blue[900],
-    //               )
-    //             ),
-    //             onPressed: (){},
-    //             label:
-    //                 Text(
-    //                   'There',
-    //                   style: TextStyle(
-    //                     fontFamily: 'Urbana',
-    //                     color: Colors.blue[900],
-    //                     fontSize: 20,
-    //                   ),
-    //                 ),
-    //             style:
-    //             ElevatedButton.styleFrom(
-    //               minimumSize: const Size(190.0, 120.0),
-    //               primary: Colors.white60,
-    //             ),
-    //           ),
-    //           SizedBox(height: 15.0,),
-    //           ElevatedButton.icon(
-    //               icon: Container(
-    //                   alignment: Alignment.center,
-    //                   child: Icon(
-    //                     CupertinoIcons.book,
-    //                     size: 50,
-    //                     color: Colors.blue[900],
-    //                   )
-    //               ),
-    //               onPressed: (){},
-    //               label:
-    //               Text(
-    //                 'Kenobi',
-    //                 style: TextStyle(
-    //                   fontFamily: 'Urbana',
-    //                   color: Colors.blue[900],
-    //                   fontSize: 20,
-    //                 ),
-    //               ),
-    //             style:
-    //             ElevatedButton.styleFrom(
-    //               minimumSize: const Size(190.0, 120.0),
-    //               primary: Colors.white60,
-    //             ),
-    //           ),
-    //         ],
-    //       )
-    //    ]
-    //  ),
-      /***************************************
-       * End second page - two column example
-       **************************************/
     );
+    ///END SECOND PAGE
+    ///
   }
 }
