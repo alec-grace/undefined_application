@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 import 'CustomShape.dart';
+import 'homePageWidgets.dart';
+//Adding comment so I can push
 
 void main() => runApp(MaterialApp(
   home: OpenPage(),
 ));
 
+
+///
+/// Widget for the non-functional buttons on home page - attempting to move
+/// this to a class "homePageWidgets.dart"
+///
 Widget listItem(IconData icon, String titleText) {
   return ElevatedButton.icon(
     icon: Container(
@@ -52,6 +60,28 @@ class _OpenPageState extends State<OpenPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<IconData> iconInfo = [
+      CupertinoIcons.map_pin_ellipse,
+      CupertinoIcons.book_fill,
+      CupertinoIcons.news_solid,
+      CupertinoIcons.news_solid,
+      CupertinoIcons.news_solid,
+      CupertinoIcons.news_solid,
+    ];
+
+    List<String> buttonTitles = [
+      "There",
+      "General",
+      "Kenobi",
+      "1Kenobi",
+      "2Kenobi",
+      "New Guy",
+    ];
+
+    HomePageWidgets listOfButtons = HomePageWidgets(icons: iconInfo, titles: buttonTitles);
+    List<Widget> homePageButtons = listOfButtons.getButtons();
+
     ///Widget tree to return
     return Scaffold(
 
@@ -84,6 +114,7 @@ class _OpenPageState extends State<OpenPage> {
     ///END APP BAR
       ///
     ///BEGIN HOME PAGE
+
     backgroundColor: Colors.blue[900],
     body:
       Padding(
@@ -97,37 +128,6 @@ class _OpenPageState extends State<OpenPage> {
             SizedBox(height: 15.0),
             ElevatedButton.icon(
               onPressed: () {
-                setState(() {
-                  tracker += 1;
-                });
-              },
-              icon: Container(
-                alignment: Alignment.topLeft,
-                child: Icon(
-                  CupertinoIcons.calendar,
-                  size: 50,
-                  color: Colors.blue[900],
-                )
-              ),
-                label:
-                  Text(
-                    'Hello x$tracker',
-                    style: TextStyle(
-                      fontFamily: 'Urbana',
-                      color: Colors.blue[900],
-                      fontSize: 20
-                    ),
-                  ),
-                style:
-                  ElevatedButton.styleFrom(
-                    minimumSize: const Size(375.0, 100.0),
-                    primary: Colors.white,
-                    onPrimary: Colors.blue[900],
-                  ),
-            ),
-            SizedBox(height: 15.0),
-            ElevatedButton.icon(
-              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SecondPage())
@@ -136,7 +136,7 @@ class _OpenPageState extends State<OpenPage> {
               icon: Container(
                   alignment: Alignment.topLeft,
                   child: Icon(
-                    CupertinoIcons.calendar,
+                    CupertinoIcons.forward,
                     size: 50,
                     color: Colors.blue[900],
                   )
@@ -158,19 +158,60 @@ class _OpenPageState extends State<OpenPage> {
               ),
             ),
             SizedBox(height: 15.0),
-            listItem(CupertinoIcons.map_pin_ellipse, "There"),
+            ElevatedButton.icon(
+              onPressed: () {
+                final popup = BeautifulPopup(
+                  context: context,
+                  template: TemplateGift,
+                );
+                setState(() {
+                  popup.show(
+                    title: 'This is a pop up',
+                    content: 'We can put a whole bunch\nof information here',
+                    actions: [
+                      popup.button(
+                        label: 'Close',
+                        onPressed: Navigator.of(context).pop,
+                      ),
+                    ],
+                  );
+                  tracker += 1;
+                });
+              },
+              icon: Container(
+                  alignment: Alignment.topLeft,
+                  child: Icon(
+                    CupertinoIcons.calendar,
+                    size: 50,
+                    color: Colors.blue[900],
+                  )
+              ),
+              label:
+              Text(
+                'Hello x$tracker',
+                style: TextStyle(
+                    fontFamily: 'Urbana',
+                    color: Colors.blue[900],
+                    fontSize: 20
+                ),
+              ),
+              style:
+              ElevatedButton.styleFrom(
+                minimumSize: const Size(375.0, 100.0),
+                primary: Colors.white,
+                onPrimary: Colors.blue[900],
+              ),
+            ),
             SizedBox(height: 15.0),
-            listItem(CupertinoIcons.book_fill, "General"),
+            listItem(CupertinoIcons.news, "Example 1"),
             SizedBox(height: 15.0),
-            listItem(CupertinoIcons.news_solid, "Kenobi"),
+            listItem(CupertinoIcons.map, "Example 2"),
             SizedBox(height: 15.0),
-            listItem(CupertinoIcons.news_solid, "1Kenobi"),
+            listItem(CupertinoIcons.book_fill, "Example 3"),
             SizedBox(height: 15.0),
-            listItem(CupertinoIcons.news_solid, "2Kenobi"),
+            listItem(CupertinoIcons.alarm_fill, "Example 4"),
             SizedBox(height: 15.0),
-            listItem(CupertinoIcons.news_solid, "New Guy"),
-            SizedBox(height: 15.0),
-          ]
+          ],
         ),
       ),
       )
@@ -202,7 +243,7 @@ class _SecondPageState extends State<SecondPage> {
                   icon: Container(
                     alignment: Alignment.topLeft,
                     child: Icon(
-                      CupertinoIcons.calendar,
+                      CupertinoIcons.back,
                       size: 50,
                       color: Colors.blue[900],
                     )
@@ -233,7 +274,7 @@ class _SecondPageState extends State<SecondPage> {
                 ),
                 onPressed: (){},
                 label: Text(
-                  'General',
+                  'Map',
                   style: TextStyle(
                     fontFamily: 'Urbana',
                     color: Colors.blue[900],
@@ -263,7 +304,7 @@ class _SecondPageState extends State<SecondPage> {
                 ),
                 onPressed: (){},
                 label: Text(
-                  'There',
+                  'News',
                   style: TextStyle(
                     fontFamily: 'Urbana',
                     color: Colors.blue[900],
@@ -281,7 +322,7 @@ class _SecondPageState extends State<SecondPage> {
               icon: Container(
                 alignment: Alignment.center,
                 child: Icon(
-                  CupertinoIcons.book,
+                  CupertinoIcons.calendar,
                   size: 50,
                   color: Colors.blue[900],
                   )
@@ -289,7 +330,7 @@ class _SecondPageState extends State<SecondPage> {
               onPressed: (){},
               label:
               Text(
-                'Kenobi',
+                'Events',
                 style: TextStyle(
                   fontFamily: 'Urbana',
                   color: Colors.blue[900],
