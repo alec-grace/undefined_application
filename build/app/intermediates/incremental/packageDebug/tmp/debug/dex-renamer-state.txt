@@ -1,0 +1,4 @@
+#Fri Dec 17 16:37:19 PST 2021
+base.0=C\:\\Users\\Alec\\Desktop\\Projects\\Undefined\\undefined_application\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
